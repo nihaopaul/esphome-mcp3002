@@ -1,4 +1,18 @@
+Sample setup for MCP3002 using SPI1 not SPI0 on the esp8266 for esphome.
+
+TODO:
+[ ] break out the cpp and clean up header file
+[ ] include configurables for interval, cs and configuration mode (channels, comparitors)
+
 ```yaml
+
+esphome:
+  name: any_name_you_configured
+  platform: ESP8266
+  board: nodemcuv2
+  includes:
+    - mcp3002.h
+
 
 
 spi:
@@ -18,11 +32,6 @@ sensor:
     unit_of_measurement: adc
   - name: "Channel 1"
     unit_of_measurement: adc
-
-
-
-
-
 
 
 ```
