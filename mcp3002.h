@@ -7,7 +7,7 @@ class MCP3002 : public PollingComponent, public spi::SPIDevice<spi::BIT_ORDER_MS
     Sensor *channel_0 = new Sensor();
     Sensor *channel_1 = new Sensor();
     
-    MCP3002() : PollingComponent(1000) { }
+    MCP3002() : PollingComponent((1000 * 30)) { }
 
     void setup() override {
       SPI.begin();
