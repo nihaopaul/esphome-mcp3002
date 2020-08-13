@@ -23,7 +23,7 @@ spi:
 sensor:
 - platform: custom
   lambda: |-
-    auto mcp3002 = new MCP3002();
+    auto mcp3002 = new MCP3002(1000);
     App.register_component(mcp3002);
     return {mcp3002->channel_0, mcp3002->channel_1};
 

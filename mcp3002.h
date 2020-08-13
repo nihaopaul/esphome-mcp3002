@@ -7,7 +7,7 @@ class MCP3002 : public PollingComponent, public spi::SPIDevice<spi::BIT_ORDER_MS
     Sensor *channel_0 = new Sensor();
     Sensor *channel_1 = new Sensor();
     
-    MCP3002() : PollingComponent((1000 * 30)) { }
+    MCP3002(uint32_t update_interval) : PollingComponent(update_interval) { }
 
     void setup() override {
       SPI.begin();
@@ -16,10 +16,8 @@ class MCP3002 : public PollingComponent, public spi::SPIDevice<spi::BIT_ORDER_MS
     }
 
     void update() override {
-
       word chan0 = read_channel(CHANNEL0);
       channel_0->publish_state(chan0);
-
       word chan1 = read_channel(CHANNEL1);
       channel_1->publish_state(chan1);
     }
